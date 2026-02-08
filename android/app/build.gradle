@@ -8,9 +8,10 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         
-        // Auto-increment versionCode based on timestamp to prevent package conflicts
-        // Format: YYMMDDHHNN (Year Month Day Hour Minute)
-        versionCode project.hasProperty('versionCode') ? project.property('versionCode').toInteger() : new Date().format('yyMMddHHmm').toInteger()
+        // Use GitHub Actions run number or manual version
+        // GitHub Actions sets GITHUB_RUN_NUMBER env variable
+        def buildNumber = System.getenv("GITHUB_RUN_NUMBER")
+        versionCode buildNumber ? buildNumber.toInteger() : 120
         versionName "1.2.0"
         
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
