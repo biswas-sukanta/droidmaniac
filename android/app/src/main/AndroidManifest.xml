@@ -34,10 +34,10 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
 
-        <!-- AdMob App ID (Production) -->
+        <!-- AdMob App ID (Your Production ID) -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8827701443685129~9458424026"/>
+            android:value="ca-app-pub-2741030797817344~1056522529"/>
     </application>
 
     <!-- Permissions -->

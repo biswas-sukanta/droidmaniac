@@ -69,7 +69,7 @@ jobs:
         
         # Inject AdMob App ID into AndroidManifest.xml (more robust method)
         if ! grep -q "com.google.android.gms.ads.APPLICATION_ID" android/app/src/main/AndroidManifest.xml; then
-          sed -i '/<application/a\        <meta-data\n            android:name="com.google.android.gms.ads.APPLICATION_ID"\n            android:value="ca-app-pub-3940256099942544~3347511713" />' android/app/src/main/AndroidManifest.AndroidManifest.xml
+          sed -i '/\<application/a\        \<meta-data\n            android:name="com.google.android.gms.ads.APPLICATION_ID"\n            android:value="ca-app-pub-2741030797817344~1056522529" /\>' android/app/src/main/AndroidManifest.xml
         fi
         
         echo "Configuration patched successfully"
