@@ -5,8 +5,7 @@
     "main": "index.html",
     "scripts": {
         "start": "npx serve www",
-        "build:android": "npx cap sync android && npx cap open android",
-        "update-icon": "node update-icon.js"
+        "build:android": "npx cap sync android && npx cap open android"
     },
     "keywords": [
         "aarti",
@@ -33,7 +32,6 @@
     },
     "devDependencies": {
         "@capacitor/cli": "^6.0.0",
-        "serve": "^14.0.0",
-        "sharp": "^0.33.0"
+        "serve": "^14.0.0"
     }
 }
