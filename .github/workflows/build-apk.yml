@@ -54,11 +54,11 @@ jobs:
         # Upgrade AGP to 8.7.2
         sed -i 's/com.android.tools.build:gradle:[0-9.]*/com.android.tools.build:gradle:8.7.2/g' android/build.gradle
         
-        # COMPLETELY DISABLE R8 - use D8 only (no code shrinking)
-        echo "android.enableR8=false" >> android/gradle.properties
-        echo "android.enableD8=true" >> android/gradle.properties
+        # Set gradle.properties (without deprecated R8/D8 options)
         echo "kotlin.code.style=official" >> android/gradle.properties
-        echo "org.gradle.jvmargs=-Xmx2048m" >> android/gradle.properties
+        echo "org.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m" >> android/gradle.properties
+        echo "org.gradle.parallel=true" >> android/gradle.properties
+        echo "org.gradle.caching=true" >> android/gradle.properties
         
         # Inject AdMob App ID into AndroidManifest.xml (more robust method)
         if ! grep -q "com.google.android.gms.ads.APPLICATION_ID" android/app/src/main/AndroidManifest.xml; then
