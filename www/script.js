@@ -36,10 +36,17 @@ function selectLang(lang) {
     document.getElementById('rashiScreen').classList.remove('hidden');
 }
 
-function selectRashi(rashi) {
-    // Save rashi selection (or empty if skipped)
-    userRashi = rashi;
-    localStorage.setItem('userRashi', rashi);
+function selectRashi(rashiName) {
+    // Convert rashi name to index for compatibility
+    const rashiMap = {
+        'aries': '0', 'taurus': '1', 'gemini': '2', 'cancer': '3',
+        'leo': '4', 'virgo': '5', 'libra': '6', 'scorpio': '7',
+        'sagittarius': '8', 'capricorn': '9', 'aquarius': '10', 'pisces': '11'
+    };
+
+    // Save as index or empty if skipped
+    userRashi = rashiName === '' ? '' : rashiMap[rashiName];
+    localStorage.setItem('userRashi', userRashi);
 
     // Hide rashi screen and show main app
     document.getElementById('rashiScreen').classList.add('hidden');
@@ -137,6 +144,9 @@ function initApp() {
     renderAartiList();
     setupAudioEvents();
     checkAlarm();
+
+    // Populate Rashi dropdown in settings
+    populateRashiDropdown();
 
     // Initialize Ads
     if (window.adService) {
@@ -342,6 +352,31 @@ function renderRashiSettings() {
         ).join('');
     const label = document.getElementById('rashiLabel');
     if (label) label.textContent = t('rashi');
+}
+
+function populateRashiDropdown() {
+    const rashiSelect = document.getElementById('rashiSelect');
+    if (!rashiSelect) return;
+
+    const rashiNames = [
+        { value: '', label: 'Not Selected' },
+        { value: '0', label: '♈ Aries / मेष' },
+        { value: '1', label: '♉ Taurus / वृषभ' },
+        { value: '2', label: '♊ Gemini / मिथुन' },
+        { value: '3', label: '♋ Cancer / कर्क' },
+        { value: '4', label: '♌ Leo / सिंह' },
+        { value: '5', label: '♍ Virgo / कन्या' },
+        { value: '6', label: '♎ Libra / तुला' },
+        { value: '7', label: '♏ Scorpio / वृश्चिक' },
+        { value: '8', label: '♐ Sagittarius / धनु' },
+        { value: '9', label: '♑ Capricorn / मकर' },
+        { value: '10', label: '♒ Aquarius / कुंभ' },
+        { value: '11', label: '♓ Pisces / मीन' }
+    ];
+
+    rashiSelect.innerHTML = rashiNames.map(r =>
+        `<option value="${r.value}" ${r.value === userRashi ? 'selected' : ''}>${r.label}</option>`
+    ).join('');
 }
 
 function saveRashi(val) {
