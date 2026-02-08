@@ -6,9 +6,15 @@
 
 ### 👨‍💻 Created by **Sukanta Biswas**
 
-🚀 **Need an app built lightning-fast?** I create amazing apps in record time!  
-📧 **Reach out**: [biswas.sukanta@hotmail.com](mailto:biswas.sukanta@hotmail.com)  
-💡 Got an idea? Let's turn it into reality! ⚡
+**Software Engineer @ Calsoft** | Android & Full-Stack Developer  
+
+🚀 **Lightning-Fast App Development** - From idea to deployment in record time!  
+💼 **Expertise**: Android (Kotlin/Java), Spring Boot, Data Pipelines, Cloud Architecture  
+🏆 **Notable Projects**: Smart Attendance System, COVID-19 Vaccine Checker, Data Pipeline Architecture  
+
+📧 **Email**: [biswas.sukanta@hotmail.com](mailto:biswas.sukanta@hotmail.com)  
+💼 **LinkedIn**: [linkedin.com/in/sukanta-biswas](https://www.linkedin.com/in/sukanta-biswas)  
+💡 **Have an app idea?** Let's build it together! ⚡
 
 ---
 
