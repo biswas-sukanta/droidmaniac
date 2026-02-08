@@ -1,0 +1,37 @@
+{
+    "name": "subah-ki-aarti",
+    "version": "1.1.0",
+    "description": "All-in-one Hindu Spiritual App: Aarti, Japa Mala, Shubh Din, Panchang & Morning Cards",
+    "main": "index.html",
+    "scripts": {
+        "start": "npx serve www",
+        "build:android": "npx cap sync android && npx cap open android"
+    },
+    "keywords": [
+        "aarti",
+        "hindu",
+        "devotional",
+        "alarm",
+        "spiritual",
+        "india",
+        "japa",
+        "mala",
+        "mantra",
+        "shubh din",
+        "panchang",
+        "horoscope"
+    ],
+    "author": "Subah Ki Aarti",
+    "license": "ISC",
+    "dependencies": {
+        "@capacitor-community/admob": "^8.0.0",
+        "@capacitor/android": "^6.0.0",
+        "@capacitor/core": "^6.0.0",
+        "@capacitor/local-notifications": "^6.0.0",
+        "@capacitor/share": "^6.0.0"
+    },
+    "devDependencies": {
+        "@capacitor/cli": "^6.0.0",
+        "serve": "^14.0.0"
+    }
+}

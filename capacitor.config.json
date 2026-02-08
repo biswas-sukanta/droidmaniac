@@ -1,0 +1,21 @@
+{
+    "appId": "com.subahkiaarti.app",
+    "appName": "Subah Ki Aarti",
+    "webDir": "www",
+    "bundledWebRuntime": false,
+    "plugins": {
+        "LocalNotifications": {
+            "smallIcon": "ic_stat_icon",
+            "iconColor": "#FF6B35",
+            "sound": "aarti_alert.wav"
+        },
+        "Share": {
+            "android": {
+                "enabled": true
+            }
+        }
+    },
+    "android": {
+        "allowMixedContent": true
+    }
+}

@@ -1,0 +1,57 @@
+{
+  "name": "Subah Ki Aarti: Daily Worship",
+  "short_name": "Subah Ki Aarti",
+  "description": "All-in-one Hindu Spiritual App: Aarti, Japa Mala, Shubh Din, Panchang & Morning Cards. 8 Languages | 100% Offline",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#ff6b35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": [
+    "music",
+    "entertainment",
+    "lifestyle"
+  ],
+  "lang": "en",
+  "dir": "ltr",
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Play Ganesh Aarti",
+      "short_name": "Ganesh",
+      "description": "Start playing Ganesh Aarti",
+      "url": "/index.html?aarti=ganesh",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Play Lakshmi Aarti",
+      "short_name": "Lakshmi",
+      "description": "Start playing Lakshmi Aarti",
+      "url": "/index.html?aarti=lakshmi",
+      "icons": [
+        {
+          "src": "icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

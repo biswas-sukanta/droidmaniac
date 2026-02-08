@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Subah Ki Aarti: Daily Worship</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Language Selection Screen -->
+    <div id="langScreen" class="lang-screen">
+        <div class="lang-box">
+            <div class="lang-icon">🙏</div>
+            <h1 class="lang-title">Subah Ki Aarti</h1>
+            <p class="lang-sub">Select your language</p>
+            <div class="lang-grid">
+                <button class="lang-btn" onclick="selectLang('hi')">हिंदी</button>
+                <button class="lang-btn" onclick="selectLang('en')">English</button>
+                <button class="lang-btn" onclick="selectLang('bn')">বাংলা</button>
+                <button class="lang-btn" onclick="selectLang('ta')">தமிழ்</button>
+                <button class="lang-btn" onclick="selectLang('te')">తెలుగు</button>
+                <button class="lang-btn" onclick="selectLang('mr')">मराठी</button>
+                <button class="lang-btn" onclick="selectLang('gu')">ગુજરાતી</button>
+                <button class="lang-btn" onclick="selectLang('kn')">ಕನ್ನಡ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="app-container hidden">
+        <div class="header">
+            <div class="logo">
+                <span class="logo-emoji">🙏</span>
+                <div>
+                    <div class="logo-text" id="appTitle">Subah Ki Aarti</div>
+                    <div class="date" id="dateDisplay"></div>
+                </div>
+            </div>
+            <button class="settings-btn" onclick="openSettings()">⚙️</button>
+        </div>
+
+        <!-- AdMob Banner Placeholder -->
+        <!-- AdMob Banner Placeholder (Spacer) -->
+        <div class="ad-banner" style="height: 50px;">
+        </div>
+
+
+        <!-- Horoscope Section -->
+        <div class="horoscope-card hidden" id="horoscopeCard">
+            <div class="horoscope-emoji" id="horoscopeEmoji">🔮</div>
+            <div class="horoscope-content">
+                <h3 class="horoscope-title" id="horoscopeTitle">Daily Horoscope</h3>
+                <p class="horoscope-text" id="horoscopeText">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Panchang Card -->
+        <div class="panchang-card">
+            <div class="panchang-title" id="panchangTitle">📅 Today's Panchang</div>
+            <div class="panchang-grid">
+                <div class="panchang-item">
+                    <div class="panchang-label" id="tithiLabel">Tithi</div>
+                    <div class="panchang-value" id="tithiValue"></div>
+                </div>
+                <div class="panchang-item">
+                    <div class="panchang-label" id="vaarLabel">Day</div>
+                    <div class="panchang-value" id="vaarValue"></div>
+                </div>
+                <div class="panchang-item">
+                    <div class="panchang-label" id="nakshatraLabel">Nakshatra</div>
+                    <div class="panchang-value" id="nakshatraValue"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shubh Din Tile -->
+        <div class="shubh-din-tile" onclick="toggleShubhExpand()">
+            <div class="shubh-header">
+                <div class="shubh-indicator" id="shubhIndicator">🟢</div>
+                <div class="shubh-title-wrap">
+                    <div class="shubh-main-title" id="shubhTitle">✨ शुभ दिन</div>
+                    <div class="shubh-subtitle" id="shubhSubtitle">Today's Auspicious Guidance</div>
+                </div>
+                <div class="shubh-expand-icon" id="shubhExpandIcon">▼</div>
+            </div>
+            <div class="shubh-quick-info">
+                <span id="shubhDeity">🙏 Worship: Shiva</span>
+                <span id="shubhMuhurat">⏰ 05:30-07:00</span>
+            </div>
+            <div class="shubh-expanded hidden" id="shubhExpanded">
+                <div class="shubh-detail-row">
+                    <span class="shubh-label" id="donateLabel">🎁 Donate:</span>
+                    <span class="shubh-value" id="shubhDonate">Rice</span>
+                </div>
+                <div class="shubh-detail-row">
+                    <span class="shubh-label" id="fastLabel">🍽️ Fast Today:</span>
+                    <span class="shubh-value" id="shubhFast">Yes ✓</span>
+                </div>
+                <div class="shubh-detail-row">
+                    <span class="shubh-label" id="colorLabel">🎨 Lucky Color:</span>
+                    <span class="shubh-value" id="shubhColor">White</span>
+                </div>
+                <div class="shubh-festival" id="shubhFestival">
+                    <span class="festival-emoji">🔱</span>
+                    <span class="festival-name" id="festivalName">Maha Shivaratri</span>
+                    <span class="festival-countdown" id="festivalCountdown">19 days left</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Card (Today's Deity) -->
+        <div class="hero" onclick="playHeroAarti()">
+            <div class="deity-circle" id="heroEmoji">🕉️</div>
+            <div class="deity-name" id="heroName">Loading...</div>
+            <div class="deity-mantra" id="heroMantra">Loading...</div>
+            <button class="play-btn">
+                <span id="playText">Play Aarti</span>
+            </button>
+        </div>
+
+        <!-- Good Morning Card Section -->
+        <div class="gm-section">
+            <div class="gm-title">
+                <span id="gmTitle">🌅 Good Morning Card</span>
+            </div>
+            <div class="gm-preview" id="gmCard">
+                <div class="gm-emoji" id="gmEmoji">🕉️</div>
+                <div class="gm-text" id="gmText">Good Morning</div>
+                <div class="gm-subtext" id="gmSubtext">Jai Shri Ram 🙏</div>
+            </div>
+            <div class="gm-buttons">
+                <button class="gm-btn whatsapp" onclick="shareWhatsApp()">
+                    <span style="margin-right: 5px;">📱</span> Share on WhatsApp
+                </button>
+                <button class="gm-btn download" onclick="downloadCard()">
+                    <span style="margin-right: 5px;">⬇️</span> Download
+                </button>
+            </div>
+        </div>
+
+        <!-- Alarm Section -->
+        <div class="section-title" id="alarmTitle">⏰ Morning Aarti Alarm</div>
+        <div class="alarm-card">
+            <div class="alarm-icon">🔔</div>
+            <div class="alarm-info">
+                <div class="alarm-title" id="alarmTimeDisplay">05:30 AM</div>
+            </div>
+            <div class="alarm-toggle" id="alarmToggle" onclick="toggleAlarm()"></div>
+        </div>
+
+        <!-- Collection -->
+        <div class="section-title" id="collectionTitle">🎵 Aarti Collection</div>
+        <div class="aarti-list" id="aartiList">
+            <!-- Items injected by JS -->
+        </div>
+    </div>
+
+    <!-- Japa Counter Section (Hidden by default) -->
+    <div class="japa-section hidden" id="japaSection">
+        <div class="japa-container">
+            <div class="japa-header">
+                <h2 class="japa-title" id="japaTitle">📿 Japa Counter</h2>
+                <div class="japa-rounds" id="japaRounds">Total: 0 Malas</div>
+            </div>
+            <div class="mala-ring" id="malaRing" onclick="incrementJapa()">
+                <div class="mala-beads" id="malaBeads">
+                    <!-- 108 beads generated by JS -->
+                </div>
+                <div class="japa-count-display">
+                    <div class="japa-count" id="japaCount">0</div>
+                    <div class="japa-max">/ 108</div>
+                </div>
+            </div>
+            <div class="japa-instructions">
+                <span id="tapInstruction">Tap to count</span>
+            </div>
+            <button class="japa-reset-btn" onclick="resetJapa()">Reset Mala</button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav hidden" id="bottomNav">
+        <div class="nav-item active" id="navHome" onclick="showTab('home', this)">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+            </div>
+            <span id="labelHome">Home</span>
+        </div>
+        <div class="nav-item" id="navAarti" onclick="showTab('aarti', this)">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" />
+                </svg>
+            </div>
+            <span id="labelAarti">Aarti</span>
+        </div>
+        <div class="nav-item" id="navJapa" onclick="showTab('japa', this)">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                </svg>
+            </div>
+            <span id="labelJapa">Japa</span>
+        </div>
+        <div class="nav-item" id="navShare" onclick="showTab('share', this)">
+            <div class="nav-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z" />
+                </svg>
+            </div>
+            <span id="labelShare">Share</span>
+        </div>
+    </div>
+
+    <!-- Player Modal -->
+    <div class="player-modal hidden" id="playerModal">
+        <div class="player-sheet">
+            <button class="close-btn"
+                style="margin-bottom: 20px; width: 40px; height: 40px; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"
+                onclick="closePlayer()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="player-emoji" id="playerEmoji">🕉️</div>
+            <div class="player-name" id="playerName">Aarti Name</div>
+            <div class="player-mantra" id="playerMantra">Mantra text...</div>
+
+            <div class="visualizer" id="visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="player-status" id="playerStatus">🔔 Playing Aarti...</div>
+
+            <div class="progress-container" onclick="seekAudio(event)">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-display">
+                    <span id="currentTime">0:00</span>
+                    <span id="totalTime">0:00</span>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <button class="ctrl-btn" onclick="prevAarti()">⏮️</button>
+                <button class="ctrl-btn main" id="playPauseBtn" onclick="togglePlay()">⏸</button>
+                <button class="ctrl-btn" onclick="nextAarti()">⏭️</button>
+            </div>
+
+            <button class="close-btn" onclick="closePlayer()">Close Player</button>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="settings-modal hidden" id="settingsModal">
+        <div class="settings-box">
+            <div class="settings-title" id="settingsTitle">App Settings</div>
+
+            <!-- Language Section -->
+            <div class="setting-section">
+                <!-- Removed redundant langSettingLabel -->
+                <div class="setting-item">
+                    <span>Language</span>
+                    <select class="lang-select" id="langSelect" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="ta">தமிழ்</option>
+                        <option value="te">తెలుగు</option>
+                        <option value="mr">मराठी</option>
+                        <option value="gu">ગુજરાતી</option>
+                        <option value="kn">ಕನ್ನಡ</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Rashi Section -->
+            <div class="setting-section">
+                <div class="setting-item">
+                    <span id="rashiLabel">Your Rashi</span>
+                    <select class="lang-select" id="rashiSelect" onchange="saveRashi(this.value)">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Alarm Section -->
+            <div class="setting-section">
+                <div class="setting-label" id="alarmSettingLabel">Alarm Time</div>
+                <div class="alarm-setting">
+                    <input type="time" class="alarm-input" id="alarmTimeInput" onchange="saveAlarmTime()">
+                </div>
+            </div>
+
+            <!-- Day Settings -->
+            <div class="setting-section">
+                <div class="setting-label" id="daySettingLabel">Day-wise Aarti</div>
+                <div id="daySettingsList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <button class="settings-close" onclick="closeSettings()">Save & Close</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Notification</div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <script type="module" src="ads.js"></script>
+</body>
+
+</html>

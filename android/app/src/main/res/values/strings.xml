@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Subah Ki Aarti</string>
+    <string name="title_activity_main">Subah Ki Aarti</string>
+    <string name="package_name">com.subahkiaarti.app</string>
+    <string name="custom_url_scheme">com.subahkiaarti.app</string>
+</resources>
