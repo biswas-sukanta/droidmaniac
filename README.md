@@ -1,32 +1,118 @@
 # Subah Ki Aarti 🙏
 
-A beautiful Hindu prayer app featuring daily Aartis, Panchang, and spiritual content.
+A beautiful Hindu prayer app featuring daily Aartis, Panchang, Shubh Din guidance, and spiritual content.
 
-## Features
-- 🎵 Daily Aartis with audio playback
-- 📅 Hindu Panchang (Calendar)
-- ✨ Shubh Din (Auspicious Days)
-- 🔔 Morning alarm for prayers
-- 🌐 Multi-language support (English, Hindi)
-- 📱 PWA support - Install on your phone
-- 🎨 Beautiful UI with dark theme
+## ✨ Features
 
-## Tech Stack
-- Vanilla JavaScript
-- Capacitor for Android APK
-- PWA (Progressive Web App)
-- AdMob for monetization
+- 🎵 **10 Daily Aartis** with high-quality audio playback
+- 📅 **Hindu Panchang** - Tithi, Day, Nakshatra
+- ✨ **Shubh Din** - Auspicious days guidance with deity recommendations
+- 🕉️ **Worship Timing** - Surya worship times and more
+- 🔔 **Morning Alarm** - Wake up to spiritual prayers
+- 🌐 **Multi-language** - English and Hindi support
+- 📱 **PWA Support** - Install on your phone like a native app
+- 🎨 **Beautiful Dark UI** - Modern, spiritual design
+- 🌅 **Good Morning Cards** - Share spiritual greetings on WhatsApp
 
-## Quick Start
-1. Open `www/index.html` in your browser
-2. Or use `npx http-server www` for local testing
-3. For Android APK: `npx cap sync && cd android && ./gradlew assembleDebug`
+## 🚀 Quick Start
 
-## Deploy to Netlify
-Simply connect this repo to Netlify - the `netlify.toml` is already configured!
+### Web Version (Local)
+```bash
+# Open directly
+open www/index.html
 
-## License
-MIT License - Feel free to use and modify
+# Or use a local server
+npx http-server www
+```
+
+### Android APK Build
+
+The project uses GitHub Actions to automatically build the APK:
+
+1. Push changes to GitHub
+2. GitHub Actions workflow builds the APK
+3. Download from Actions artifacts
+
+**Build Configuration:**
+- Gradle 8.10.2
+- Android Gradle Plugin 8.7.2
+- Kotlin 1.8.22
+- Min SDK: 23, Target SDK: 35
+- AdMob integration included
+
+### Deploy to Netlify
+
+Simply connect this repository to Netlify - `netlify.toml` is pre-configured!
+
+The web app will be deployed automatically.
+
+## 📦 Tech Stack
+
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3
+- **Mobile**: Capacitor for Android
+- **Monetization**: AdMob (@capacitor-community/admob)
+- **PWA**: Service Worker for offline support
+- **Audio**: Native HTML5 Audio API
+
+## 🔧 Development
+
+```bash
+# Install dependencies
+npm install
+
+# Sync Capacitor
+npx cap sync
+
+# Build Android (requires Android Studio)
+cd android
+./gradlew assembleDebug
+```
+
+## 📱 AdMob Integration
+
+The app includes AdMob with an on-screen debug panel:
+- Shows initialization status
+- Displays ad load success/errors
+- Color-coded messages (green=success, red=error)
+- No USB debugging needed!
+
+**Test Ads** are configured by default. Replace with production IDs before publishing.
+
+## 🎵 Audio Files
+
+The app includes 10 devotional aartis:
+- Om Jai Jagdish Hare
+- Jai Ganesh Deva
+- Om Jai Shiv Omkara
+- Om Jai Laxmi Mata
+- Durga Devi Aarti
+- Hanuman Chalisa
+- Surya Bhagwan Aarti
+- Gayatri Mantra
+- Maha Mrityunjaya Mantra
+- Hare Krishna Hare Rama
+
+## 🌍 Deployment
+
+**Web (Netlify):**
+- Automatic deployment on push
+- Custom domain support
+- HTTPS included
+
+**Android (GitHub Actions):**
+- Builds APK automatically
+- Download from Actions tab
+- Ready for Google Play Store
+
+## 📄 License
+
+MIT License - Free to use and modify
+
+## 🙏 Credits
+
+Built with devotion for spiritual seekers worldwide.
 
 ---
-Made with ❤️ for spiritual seekers
+
+**Repository**: https://github.com/biswas-sukanta/droidmaniac  
+**Branch**: feature/Subah-Ki-Aarti
