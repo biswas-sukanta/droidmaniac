@@ -5,9 +5,10 @@ import { Capacitor } from '@capacitor/core';
 export class AdService {
     constructor() {
         this.initialized = false;
-        // TEST IDs - REPLACE WITH REAL IDS IN PRODUCTION
-        this.bannerId = 'ca-app-pub-3940256099942544/6300978111'; // Google Test Banner ID
-        this.interstitialId = 'ca-app-pub-3940256099942544/1033173712'; // Google Test Interstitial ID
+        // REAL ADMOB IDs - Production
+        this.bannerId = 'ca-app-pub-8827701443685129/4102162341'; // Real Banner ID
+        this.interstitialId = 'ca-app-pub-8827701443685129/8313639850'; // Real Interstitial ID
+        this.appId = 'ca-app-pub-8827701443685129~9458424026'; // App ID (already in AndroidManifest.xml)
     }
 
     async initialize() {

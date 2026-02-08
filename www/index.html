@@ -28,6 +28,30 @@
         </div>
     </div>
 
+    <!-- Horoscope Selection Screen (Optional) -->
+    <div id="rashiScreen" class="lang-screen hidden">
+        <div class="lang-box">
+            <div class="lang-icon">🔮</div>
+            <h1 class="lang-title">Daily Horoscope</h1>
+            <p class="lang-sub">Select your Rashi (Optional)</p>
+            <div class="lang-grid">
+                <button class="lang-btn" onclick="selectRashi('aries')">♈ Aries<br>मेष</button>
+                <button class="lang-btn" onclick="selectRashi('taurus')">♉ Taurus<br>वृषभ</button>
+                <button class="lang-btn" onclick="selectRashi('gemini')">♊ Gemini<br>मिथुन</button>
+                <button class="lang-btn" onclick="selectRashi('cancer')">♋ Cancer<br>कर्क</button>
+                <button class="lang-btn" onclick="selectRashi('leo')">♌ Leo<br>सिंह</button>
+                <button class="lang-btn" onclick="selectRashi('virgo')">♍ Virgo<br>कन्या</button>
+                <button class="lang-btn" onclick="selectRashi('libra')">♎ Libra<br>तुला</button>
+                <button class="lang-btn" onclick="selectRashi('scorpio')">♏ Scorpio<br>वृश्चिक</button>
+                <button class="lang-btn" onclick="selectRashi('sagittarius')">♐ Sagittarius<br>धनु</button>
+                <button class="lang-btn" onclick="selectRashi('capricorn')">♑ Capricorn<br>मकर</button>
+                <button class="lang-btn" onclick="selectRashi('aquarius')">♒ Aquarius<br>कुंभ</button>
+                <button class="lang-btn" onclick="selectRashi('pisces')">♓ Pisces<br>मीन</button>
+            </div>
+            <button class="skip-btn" onclick="selectRashi('')">Skip for now →</button>
+        </div>
+    </div>
+
     <!-- Main App -->
     <div id="mainApp" class="app-container hidden">
         <div class="header">
@@ -259,6 +283,7 @@
                 <button class="ctrl-btn" onclick="prevAarti()">⏮️</button>
                 <button class="ctrl-btn main" id="playPauseBtn" onclick="togglePlay()">⏸</button>
                 <button class="ctrl-btn" onclick="nextAarti()">⏭️</button>
+                <button class="ctrl-btn repeat-btn" id="repeatBtn" onclick="toggleRepeat()" title="Repeat">🔁</button>
             </div>
 
             <button class="close-btn" onclick="closePlayer()">Close Player</button>

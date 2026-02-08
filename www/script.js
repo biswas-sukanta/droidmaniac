@@ -31,8 +31,21 @@ function selectLang(lang) {
     currentLang = lang;
     localStorage.setItem('lang', lang);
     document.getElementById('langScreen').classList.add('hidden');
+
+    // Show horoscope selection screen
+    document.getElementById('rashiScreen').classList.remove('hidden');
+}
+
+function selectRashi(rashi) {
+    // Save rashi selection (or empty if skipped)
+    userRashi = rashi;
+    localStorage.setItem('userRashi', rashi);
+
+    // Hide rashi screen and show main app
+    document.getElementById('rashiScreen').classList.add('hidden');
     document.getElementById('mainApp').classList.remove('hidden');
     document.getElementById('bottomNav').classList.remove('hidden');
+
     initApp();
     renderShubhDin();
 }
@@ -212,6 +225,15 @@ function playAarti(id) {
 }
 
 function togglePlay() { isPlaying ? audioPlayer.pause() : audioPlayer.play(); }
+
+function toggleRepeat() {
+    const repeatBtn = document.getElementById('repeatBtn');
+    audioPlayer.loop = !audioPlayer.loop;
+    repeatBtn.style.opacity = audioPlayer.loop ? '1' : '0.5';
+    repeatBtn.style.color = audioPlayer.loop ? '#FF6B35' : '#666';
+    showToast(audioPlayer.loop ? '🔁 Repeat ON' : '🔁 Repeat OFF');
+}
+
 function nextAarti() { const idx = AARTIS.findIndex(a => a.id === currentAarti?.id); playAarti(AARTIS[(idx + 1) % AARTIS.length].id); }
 function prevAarti() { const idx = AARTIS.findIndex(a => a.id === currentAarti?.id); playAarti(AARTIS[(idx - 1 + AARTIS.length) % AARTIS.length].id); }
 function closePlayer() {
