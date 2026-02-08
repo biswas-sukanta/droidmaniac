@@ -43,12 +43,12 @@ export class AdService {
             const options = {
                 adId: this.bannerId,
                 adSize: BannerAdSize.BANNER,
-                position: BannerAdPosition.BOTTOM_CENTER,
+                position: BannerAdPosition.TOP_CENTER, // Changed to TOP to avoid bottom nav overlap
                 margin: 0,
-                isTesting: true
+                isTesting: false // Using real ads now
             };
             await AdMob.showBanner(options);
-            DebugLogger.log('✓ Banner ad requested', 'success');
+            DebugLogger.log('✓ Banner ad showing at top', 'success');
         } catch (e) {
             DebugLogger.log('✗ Banner failed: ' + e.message, 'error');
             console.error('[AdMob] ✗ Failed to show banner:', e);
@@ -68,7 +68,7 @@ export class AdService {
         try {
             await AdMob.prepareInterstitial({
                 adId: this.interstitialId,
-                isTesting: true
+                isTesting: false // Using real ads
             });
             DebugLogger.log('✓ Interstitial loaded', 'success');
         } catch (e) {
@@ -80,17 +80,20 @@ export class AdService {
     async showInterstitial() {
         if (!this.initialized) {
             DebugLogger.log('Cannot show interstitial: Not initialized', 'warning');
-            return;
+            return false;
         }
 
-        DebugLogger.log('Showing interstitial...');
+        DebugLogger.log('Attempting to show interstitial...');
         try {
-            await this.prepareInterstitial();
             await AdMob.showInterstitial();
-            DebugLogger.log('✓ Interstitial displayed', 'success');
+            DebugLogger.log('✓ Interstitial shown', 'success');
+            // Prepare next interstitial for future use
+            setTimeout(() => this.prepareInterstitial(), 1000);
+            return true;
         } catch (e) {
-            DebugLogger.log('✗ Interstitial failed: ' + e.message, 'error');
+            DebugLogger.log('✗ Interstitial show failed: ' + e.message, 'error');
             console.error('[AdMob] ✗ Failed to show interstitial:', e);
+            return false;
         }
     }
 }

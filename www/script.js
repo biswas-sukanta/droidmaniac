@@ -153,10 +153,37 @@ function initApp() {
         window.adService.initialize().then(() => {
             // Show banner ad after initialization
             window.adService.showBanner();
+            // Prepare first interstitial
+            window.adService.prepareInterstitial();
         }).catch(error => {
             console.log('[AdMob] Initialization or banner failed:', error);
         });
     }
+
+    // Add Android back button handler for exit interstitial
+    setupBackButtonHandler();
+}
+
+// Handle Android back button to show exit interstitial
+function setupBackButtonHandler() {
+    document.addEventListener('backbutton', async (e) => {
+        e.preventDefault();
+
+        // If on main screen, show exit interstitial then exit
+        const mainApp = document.getElementById('mainApp');
+        const isMainScreen = mainApp && !mainApp.classList.contains('hidden');
+
+        if (isMainScreen && window.adService) {
+            const adShown = await window.adService.showInterstitial();
+            // Exit app after showing ad (or immediately if ad fails)
+            setTimeout(() => {
+                navigator.app.exitApp();
+            }, adShown ? 300 : 0);
+        } else {
+            // On other screens, just go back or exit
+            navigator.app.exitApp();
+        }
+    }, false);
 }
 
 function formatAlarmTime(time) {
