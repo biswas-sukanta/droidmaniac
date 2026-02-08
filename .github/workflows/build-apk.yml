@@ -60,9 +60,16 @@ jobs:
         echo "org.gradle.parallel=true" >> android/gradle.properties
         echo "org.gradle.caching=true" >> android/gradle.properties
         
+        # ProGuard file already exists in repo - verify it's present
+        if [ ! -f "android/app/proguard-rules.pro" ]; then
+          echo "ERROR: proguard-rules.pro not found!"
+          exit 1
+        fi
+        echo "ProGuard rules file found - will be used in release build"
+        
         # Inject AdMob App ID into AndroidManifest.xml (more robust method)
         if ! grep -q "com.google.android.gms.ads.APPLICATION_ID" android/app/src/main/AndroidManifest.xml; then
-          sed -i '/<application/a\        <meta-data\n            android:name="com.google.android.gms.ads.APPLICATION_ID"\n            android:value="ca-app-pub-3940256099942544~3347511713" />' android/app/src/main/AndroidManifest.xml
+          sed -i '/<application/a\        <meta-data\n            android:name="com.google.android.gms.ads.APPLICATION_ID"\n            android:value="ca-app-pub-3940256099942544~3347511713" />' android/app/src/main/AndroidManifest.AndroidManifest.xml
         fi
         
         echo "Configuration patched successfully"

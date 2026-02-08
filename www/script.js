@@ -127,7 +127,12 @@ function initApp() {
 
     // Initialize Ads
     if (window.adService) {
-        window.adService.initialize();
+        window.adService.initialize().then(() => {
+            // Show banner ad after initialization
+            window.adService.showBanner();
+        }).catch(error => {
+            console.log('[AdMob] Initialization or banner failed:', error);
+        });
     }
 }
 
