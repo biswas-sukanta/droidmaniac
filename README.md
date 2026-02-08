@@ -1,5 +1,19 @@
 # Subah Ki Aarti 🙏
 
+---
+
+<div align="center">
+
+### 👨‍💻 Created by **Sukanta Biswas**
+
+🚀 **Need an app built lightning-fast?** I create amazing apps in record time!  
+📧 **Reach out**: [biswas.sukanta@hotmail.com](mailto:biswas.sukanta@hotmail.com)  
+💡 Got an idea? Let's turn it into reality! ⚡
+
+---
+
+</div>
+
 A beautiful Hindu prayer app featuring daily Aartis, Panchang, Shubh Din guidance, and spiritual content.
 
 ## ✨ Features
