@@ -1,24 +1,28 @@
-# Subah Ki Aarti 🙏
+<div align="center">
+
+# 👨‍💻 Sukanta Biswas
+
+**Senior Principal Development Engineer @ Calsoft**
 
 ---
 
-<div align="center">
+### 🚀 Lightning-Fast App Development | Backend Architecture Expert
 
-### 👨‍💻 Created by **Sukanta Biswas**
-
-**Software Engineer @ Calsoft** | Android & Full-Stack Developer  
-
-🚀 **Lightning-Fast App Development** - From idea to deployment in record time!  
-💼 **Expertise**: Android (Kotlin/Java), Spring Boot, Data Pipelines, Cloud Architecture  
-🏆 **Notable Projects**: Smart Attendance System, COVID-19 Vaccine Checker, Data Pipeline Architecture  
+💼 **Core Expertise**: Spring Boot • Microservices • Backend Development • Cloud Architecture  
+🏗️ **Specialties**: Distributed Systems • Data Pipelines • RESTful APIs • System Design  
+🎯 **Passion Projects**: Building apps as a hobby - From concept to production in record time!
 
 📧 **Email**: [biswas.sukanta@hotmail.com](mailto:biswas.sukanta@hotmail.com)  
 💼 **LinkedIn**: [linkedin.com/in/sukanta-biswas](https://www.linkedin.com/in/sukanta-biswas)  
-💡 **Have an app idea?** Let's build it together! ⚡
+🏆 **Portfolio**: Smart Attendance System • COVID-19 Vaccine Checker • Data Pipeline Architecture  
+
+💡 **Open for Projects** - Have an idea? Let's architect and build it together! ⚡
 
 ---
 
 </div>
+
+# Subah Ki Aarti 🙏
 
 A beautiful Hindu prayer app featuring daily Aartis, Panchang, Shubh Din guidance, and spiritual content.
 
