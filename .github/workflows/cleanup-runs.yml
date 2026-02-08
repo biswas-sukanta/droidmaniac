@@ -1,0 +1,29 @@
+name: Cleanup Old Workflow Runs
+
+on:
+  schedule:
+    # Run twice daily at 6 AM and 6 PM IST (00:30 and 12:30 UTC)
+    - cron: '30 0,12 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  cleanup:
+    name: Delete Old Workflow Runs
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Delete Old Workflow Runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 7 # Keep runs from last 7 days
+          keep_minimum_runs: 3 # Always keep at least 3 most recent runs
+          delete_workflow_pattern: 'build-apk.yml' # Only delete build-apk runs
+          
+      - name: Summary
+        run: |
+          echo "🧹 Cleaned up old workflow runs"
+          echo "- Retained: Last 7 days"
+          echo "- Minimum kept: 3 most recent runs"
+          echo "- Next cleanup: In 12 hours"
