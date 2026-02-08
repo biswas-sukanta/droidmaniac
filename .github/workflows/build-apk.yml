@@ -1,0 +1,90 @@
+name: Build Android APK (Auto-Generate Android)
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
+      with:
+        gradle-version: 8.10.2
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Add Android Platform
+      run: npx cap add android
+
+    - name: Patch Android Configuration
+      run: |
+        echo "Patching SDK versions and Kotlin version..."
+        
+        # Patch compileSdk and targetSdk to 35
+        sed -i 's/compileSdkVersion = .*/compileSdkVersion = 35/g' android/variables.gradle
+        sed -i 's/targetSdkVersion = .*/targetSdkVersion = 35/g' android/variables.gradle
+        
+        # Patch minSdkVersion to 23 (required by AdMob)
+        sed -i 's/minSdkVersion = .*/minSdkVersion = 23/g' android/variables.gradle
+        
+        # Downgrade Kotlin to 1.8.22 for maximum R8 compatibility
+        sed -i 's/kotlin_version = .*/kotlin_version = "1.8.22"/g' android/variables.gradle
+        
+        # Upgrade AGP to 8.7.2
+        sed -i 's/com.android.tools.build:gradle:[0-9.]*/com.android.tools.build:gradle:8.7.2/g' android/build.gradle
+        
+        # Create/update gradle.properties to disable R8 Kotlin metadata rewriting
+        echo "android.enableR8.fullMode=false" >> android/gradle.properties
+        echo "android.enableR8=true" >> android/gradle.properties
+        echo "kotlin.code.style=official" >> android/gradle.properties
+        
+        # Inject AdMob App ID into AndroidManifest.xml (more robust method)
+        if ! grep -q "com.google.android.gms.ads.APPLICATION_ID" android/app/src/main/AndroidManifest.xml; then
+          sed -i '/<application/a\        <meta-data\n            android:name="com.google.android.gms.ads.APPLICATION_ID"\n            android:value="ca-app-pub-3940256099942544~3347511713" />' android/app/src/main/AndroidManifest.xml
+        fi
+        
+        echo "Configuration patched successfully"
+
+    - name: Verify Configurations
+      run: |
+        echo "=== variables.gradle ==="
+        grep -E "(minSdk|compileSdk|targetSdk|kotlin_version)" android/variables.gradle || true
+        echo "=== build.gradle (AGP version) ==="
+        grep "com.android.tools.build:gradle" android/build.gradle || true
+        echo "=== AndroidManifest.xml (AdMob) ==="
+        grep -A2 "APPLICATION_ID" android/app/src/main/AndroidManifest.xml || echo "AdMob ID not found"
+
+    - name: Sync Capacitor
+      run: npx cap sync android
+
+    - name: Build Debug APK
+      run: |
+        cd android
+        gradle assembleDebug --no-daemon --no-build-cache
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: android/app/build/outputs/apk/debug/app-debug.apk
