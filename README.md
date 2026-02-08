@@ -24,87 +24,81 @@
 
 # Subah Ki Aarti 🙏
 
-A beautiful Hindu prayer app featuring daily Aartis, Panchang, Shubh Din guidance, and spiritual content.
+A beautiful Hindu prayer app featuring daily Aartis, Japa Counter, Panchang, Shubh Din guidance, Daily Horoscope, and spiritual content.
 
 ## ✨ Features
 
-- 🎵 **10 Daily Aartis** with high-quality audio playback
-- 📅 **Hindu Panchang** - Tithi, Day, Nakshatra
-- ✨ **Shubh Din** - Auspicious days guidance with deity recommendations
-- 🕉️ **Worship Timing** - Surya worship times and more
+- 🎵 **10 Daily Aartis** with high-quality audio playback and repeat mode
+- 📿 **Japa Counter** - Digital mala counter for mantra counting
+- 📅 **Hindu Panchang** - Tithi, Day, Nakshatra with today's guidance
+- ✨ **Shubh Din** - Auspicious days with deity worship recommendations
+- 🔮 **Daily Horoscope** - Personalized daily horoscope based on your rashi
+- 🕉️ **Worship Timing** - Surya worship times
 - 🔔 **Morning Alarm** - Wake up to spiritual prayers
 - 🌐 **Multi-language** - English and Hindi support
-- 📱 **PWA Support** - Install on your phone like a native app
-- 🎨 **Beautiful Dark UI** - Modern, spiritual design
 - 🌅 **Good Morning Cards** - Share spiritual greetings on WhatsApp
+- 📱 **PWA Support** - Install like a native app
+- 🎨 **Beautiful UI** - Modern dark theme with spiritual aesthetics
 
 ## 🚀 Quick Start
 
-### Web Version (Local)
+### Web Version
 ```bash
 # Open directly
 open www/index.html
 
-# Or use a local server
-npx http-server www
+# Or use local server
+npm start
 ```
 
-### Android APK Build
-
-The project uses GitHub Actions to automatically build the APK:
-
-1. Push changes to GitHub
-2. GitHub Actions workflow builds the APK
-3. Download from Actions artifacts
-
-**Build Configuration:**
-- Gradle 8.10.2
-- Android Gradle Plugin 8.7.2
-- Kotlin 1.8.22
-- Min SDK: 23, Target SDK: 35
-- AdMob integration included
-
-### Deploy to Netlify
-
-Simply connect this repository to Netlify - `netlify.toml` is pre-configured!
-
-The web app will be deployed automatically.
-
-## 📦 Tech Stack
-
-- **Frontend**: Vanilla JavaScript, HTML5, CSS3
-- **Mobile**: Capacitor for Android
-- **Monetization**: AdMob (@capacitor-community/admob)
-- **PWA**: Service Worker for offline support
-- **Audio**: Native HTML5 Audio API
-
-## 🔧 Development
-
+### Android Build
 ```bash
 # Install dependencies
 npm install
 
-# Sync Capacitor
-npx cap sync
-
-# Build Android (requires Android Studio)
-cd android
-./gradlew assembleDebug
+# Sync & build
+npm run build:android
 ```
 
-## 📱 AdMob Integration
+## 📦 Tech Stack
 
-The app includes AdMob with an on-screen debug panel:
-- Shows initialization status
-- Displays ad load success/errors
-- Color-coded messages (green=success, red=error)
-- No USB debugging needed!
+- **Frontend**: Vanilla JavaScript, HTML5, CSS3
+- **Mobile**: Capacitor 6.0 for Android
+- **Monetization**: AdMob (real production IDs configured)
+- **Audio**: Native HTML5 Audio API with repeat functionality
 
-**Test Ads** are configured by default. Replace with production IDs before publishing.
+## 🎨 App Icon
 
-## 🎵 Audio Files
+Beautiful namaste icon with Om symbol and sunrise gradient. To update:
 
-The app includes 10 devotional aartis:
+1. Create new 512x512px icon
+2. Upload to [appicon.co](https://appicon.co)
+3. Download Android icons
+4. Copy to `android/app/src/main/res/mipmap-*/`
+5. Commit & push
+
+See `app-icon/README.md` for details.
+
+## 📱 Version Management
+
+**Auto-incrementing version codes** using GitHub Actions run number:
+- Each build gets unique version code
+- No package conflicts when installing
+- Format: versionCode = GitHub run number (e.g., 150, 151, 152...)
+
+**Current version**: 1.2.0
+
+## 🧹 Automated Cleanup
+
+GitHub Actions workflow runs **twice daily** (6 AM & 6 PM IST):
+- Deletes old workflow runs
+- Keeps: Last 7 days OR minimum 3 runs
+- Saves storage space
+
+Manual trigger: Actions → Cleanup Old Workflow Runs
+
+## 🎵 Included Aartis
+
 - Om Jai Jagdish Hare
 - Jai Ganesh Deva
 - Om Jai Shiv Omkara
@@ -116,17 +110,32 @@ The app includes 10 devotional aartis:
 - Maha Mrityunjaya Mantra
 - Hare Krishna Hare Rama
 
+## 💰 AdMob Integration
+
+**Real production ads configured:**
+- Banner: Top of screen
+- Interstitial: On player close & app exit
+- Auto-prepares ads for seamless experience
+
+**Note**: Ads may take 1-2 hours to fill for new AdMob accounts.
+
 ## 🌍 Deployment
 
-**Web (Netlify):**
-- Automatic deployment on push
-- Custom domain support
-- HTTPS included
+**GitHub Actions**:
+- Automatic APK builds on push
+- Download from Actions artifacts
+- Ready for Play Store
 
-**Android (GitHub Actions):**
-- Builds APK automatically
-- Download from Actions tab
-- Ready for Google Play Store
+**Netlify** (optional):
+- Auto-deploy web version
+- `netlify.toml` pre-configured
+
+## 🔧 Development Commands
+
+```bash
+npm start              # Run local web server
+npm run build:android  # Sync Capacitor & open Android Studio
+```
 
 ## 📄 License
 
