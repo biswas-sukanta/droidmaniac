@@ -54,7 +54,7 @@ const AARTIS = [
         mantraBn: 'ওম ত্র্যম্বকম্ যজামহে', mantraTa: 'ஓம் த்ரயம்பகம் யஜாமஹே', mantraTe: 'ఓం త్రయంబకం యజామహే', mantraMr: 'ॐ त्र्यम्बकं यजामहे', mantraGu: 'ૐ ત્રયંબકમ યજામહે', mantraKn: 'ಓಂ ತ್ರ್ಯಂಬಕಂ ಯಜಾಮಹೇ'
     },
     {
-        id: 'harekrishna', emoji: '📿', audio: 'aarti_audio/The Great Mantra.mp3',
+        id: 'harekrishna', emoji: '📿', audio: 'aarti_audio/Hare Krishna, Hare Rama.mp3',
         name: 'Hare Krishna', nameHi: 'हरे कृष्ण', nameBn: 'হরে কৃষ্ণ', nameTa: 'ஹரே கிருஷ்ணா', nameTe: 'హరే కృష్ణ', nameMr: 'हरे कृष्ण', nameGu: 'હરે કૃષ્ણ', nameKn: 'ಹರೇ ಕೃಷ್ಣ',
         mantra: 'हरे कृष्ण हरे कृष्ण', mantraEn: 'Hare Krishna Hare Krishna',
         mantraBn: 'হরে কৃষ্ণ হরে কৃষ্ণ', mantraTa: 'ஹரே கிருஷ்ணா ஹரே கிருஷ்ணா', mantraTe: 'హరే కృష్ణ హరే కృష్ణ', mantraMr: 'हरे कृष्ण हरे कृष्ण', mantraGu: 'હરે કૃષ્ણ હરે કૃષ્ણ', mantraKn: 'ಹರೇ ಕೃಷ್ಣ ಹರೇ ಕೃಷ್ಣ'
