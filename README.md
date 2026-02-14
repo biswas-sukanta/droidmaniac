@@ -28,17 +28,17 @@ A beautiful Hindu prayer app featuring daily Aartis, Japa Counter, Panchang, Shu
 
 ## ✨ Features
 
-- 🎵 **10 Daily Aartis** with high-quality audio playback and repeat mode
-- 📿 **Japa Counter** - Digital mala counter for mantra counting
-- 📅 **Hindu Panchang** - Tithi, Day, Nakshatra with today's guidance
-- ✨ **Shubh Din** - Auspicious days with deity worship recommendations
-- 🔮 **Daily Horoscope** - Personalized daily horoscope based on your rashi
-- 🕉️ **Worship Timing** - Surya worship times
-- 🔔 **Morning Alarm** - Wake up to spiritual prayers
-- 🌐 **Multi-language** - English and Hindi support
-- 🌅 **Good Morning Cards** - Share spiritual greetings on WhatsApp
-- 📱 **PWA Support** - Install like a native app
-- 🎨 **Beautiful UI** - Modern dark theme with spiritual aesthetics
+- 🎵 **10 Daily Aartis** with high-quality audio playback and repeat mode.
+- 📿 **Japa Counter** - Digital mala counter for mantra counting.
+- 📅 **Hindu Panchang** - Tithi, Day, Nakshatra with today's guidance.
+- ✨ **Shubh Din** - Auspicious days with deity worship recommendations.
+- 🔮 **Daily Horoscope** - Personalized daily horoscope based on your rashi.
+- 🕉️ **Worship Timing** - Surya worship times.
+- 🔔 **Morning Alarm** - Wake up to spiritual prayers.
+- 🌐 **Multi-language** - English and Hindi support.
+- 🌅 **Good Morning Cards** - Share spiritual greetings on WhatsApp.
+- 📱 **PWA Support** - Install like a native app.
+- 🎨 **Beautiful UI** - Modern dark theme with spiritual aesthetics.
 
 ## 🚀 Quick Start
 
